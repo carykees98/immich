@@ -186,13 +186,7 @@
               {/if}
               {#if reaction.user.id === user.id || albumOwnerId === user.id}
                 <div class="mr-4">
-                  <ButtonContextMenu
-                    icon={mdiDotsVertical}
-                    title={$t('comment_options')}
-                    align="top-right"
-                    direction="left"
-                    size="16"
-                  >
+                  <ButtonContextMenu icon={mdiDotsVertical} title={$t('comment_options')} size="16">
                     <MenuOption
                       activeColor="bg-red-200"
                       icon={mdiDeleteOutline}
@@ -239,13 +233,7 @@
                 {/if}
                 {#if reaction.user.id === user.id || albumOwnerId === user.id}
                   <div class="mr-4">
-                    <ButtonContextMenu
-                      icon={mdiDotsVertical}
-                      title={$t('reaction_options')}
-                      align="top-right"
-                      direction="left"
-                      size="16"
-                    >
+                    <ButtonContextMenu icon={mdiDotsVertical} title={$t('reaction_options')} size="16">
                       <MenuOption
                         activeColor="bg-red-200"
                         icon={mdiDeleteOutline}

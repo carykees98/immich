@@ -67,6 +67,8 @@
         size="20"
         icon={mdiDotsVertical}
         title={$t('show_person_options')}
+        direction="right"
+        align="top-left"
       >
         <MenuOption onClick={onHidePerson} icon={mdiEyeOffOutline} text={$t('hide_person')} />
         <MenuOption onClick={onChangeName} icon={mdiAccountEditOutline} text={$t('change_name')} />
