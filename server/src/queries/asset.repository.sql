@@ -275,8 +275,7 @@ FROM
   (
     SELECT
       "AssetEntity"."id" AS "AssetEntity_id",
-      "AssetEntity"."originalPath" AS "AssetEntity_originalPath",
-      "AssetEntity"."isOffline" AS "AssetEntity_isOffline"
+      "AssetEntity"."originalPath" AS "AssetEntity_originalPath"
     FROM
       "assets" "AssetEntity"
       LEFT JOIN "libraries" "AssetEntity__AssetEntity_library" ON "AssetEntity__AssetEntity_library"."id" = "AssetEntity"."libraryId"
@@ -365,18 +364,6 @@ WHERE
       "libraryId" = $1
       AND "originalPath" = path
   );
-
--- AssetRepository.updateOfflineLibraryAssets
-UPDATE "assets"
-SET
-  "isOffline" = $1,
-  "updatedAt" = CURRENT_TIMESTAMP
-WHERE
-  (
-    "libraryId" = $2
-    AND NOT ("originalPath" IN ($3))
-    AND "isOffline" = $4
-  )
 
 -- AssetRepository.getAllByDeviceId
 SELECT
@@ -1173,15 +1160,3 @@ RETURNING
   "id",
   "createdAt",
   "updatedAt"
-
--- AssetRepository.restoreAllDeleted
-UPDATE "assets"
-SET
-  "deletedAt" = $1,
-  "trashReason" = $2,
-  "updatedAt" = CURRENT_TIMESTAMP
-WHERE
-  (
-    "ownerId" = $3
-    AND "trashReason" = $4
-  )
